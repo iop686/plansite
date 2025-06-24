@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2306a1542556f6057c6526f1bacf2a58 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2306a1542556f6057c6526f1bacf2a58" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2306a1542556f6057c6526f1bacf2a58 = L.map(
+                "map_2306a1542556f6057c6526f1bacf2a58",
+                {
+                    center: [37.556479, 126.923284],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 15,
+  "zoomControl": false,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_2306a1542556f6057c6526f1bacf2a58);
+
+            
+
+        
+    
+            var tile_layer_03f1694684cadf6cd03f3c4ed23e3c7d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_03f1694684cadf6cd03f3c4ed23e3c7d.addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var marker_2b841c359844122ab0d1719adf912184 = L.marker(
+                [37.556755, 126.920429],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_dfd1d7a408540f5a7a724b71117f1612 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_2b841c359844122ab0d1719adf912184.bindTooltip(
+                `<div>
+                     필름현상
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2b841c359844122ab0d1719adf912184.setIcon(icon_dfd1d7a408540f5a7a724b71117f1612);
+            
+    
+            var marker_99c2012669fdd4aae29da07eaa2a8ec9 = L.marker(
+                [37.556599, 126.922333],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_31570a71879c2bc9e1b505919fc5cfb8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_99c2012669fdd4aae29da07eaa2a8ec9.bindTooltip(
+                `<div>
+                     나가노 팝업
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_99c2012669fdd4aae29da07eaa2a8ec9.setIcon(icon_31570a71879c2bc9e1b505919fc5cfb8);
+            
+    
+            var marker_d81615735464fda399f42fbb9cddf78d = L.marker(
+                [37.556844, 126.923209],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_251bd17d4cb17029c7d0ceab21d2effe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_d81615735464fda399f42fbb9cddf78d.bindTooltip(
+                `<div>
+                     CIH SHOP 케이북스
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d81615735464fda399f42fbb9cddf78d.setIcon(icon_251bd17d4cb17029c7d0ceab21d2effe);
+            
+    
+            var marker_9c2a8bca9bc73369f5b2dfae1969bd55 = L.marker(
+                [37.556092, 126.923455],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_e667b4321543f986ac0398874c863017 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_9c2a8bca9bc73369f5b2dfae1969bd55.bindTooltip(
+                `<div>
+                     오모차랜드 홍대 2호점
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9c2a8bca9bc73369f5b2dfae1969bd55.setIcon(icon_e667b4321543f986ac0398874c863017);
+            
+    
+            var marker_227af3ebd1bfc94b727c778b35d03cec = L.marker(
+                [37.555901, 126.923783],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_c1e307f964a6c9df0615c712ed5aa65f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_227af3ebd1bfc94b727c778b35d03cec.bindTooltip(
+                `<div>
+                     더쿠 홍대입구점
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_227af3ebd1bfc94b727c778b35d03cec.setIcon(icon_c1e307f964a6c9df0615c712ed5aa65f);
+            
+    
+            var marker_da9a52e3aa27cb04494c7b8d2c068bdf = L.marker(
+                [37.556094, 126.924087],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_4072903424bbfbcacde9a498dca9f32d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_da9a52e3aa27cb04494c7b8d2c068bdf.bindTooltip(
+                `<div>
+                     중경식객
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_da9a52e3aa27cb04494c7b8d2c068bdf.setIcon(icon_4072903424bbfbcacde9a498dca9f32d);
+            
+    
+            var marker_cd8d87238195a5425da18f4c4dbaf827 = L.marker(
+                [37.555116, 126.922822],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_0560ca2ddb114d664d7f94cde71ab97b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_cd8d87238195a5425da18f4c4dbaf827.bindTooltip(
+                `<div>
+                     원 피규어
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cd8d87238195a5425da18f4c4dbaf827.setIcon(icon_0560ca2ddb114d664d7f94cde71ab97b);
+            
+    
+            var marker_e3d88dc84f7bd48da101e286da9fbee6 = L.marker(
+                [37.553622, 126.920441],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_f95a47e4ebfe0f35bf1c9f052e7903ed = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_e3d88dc84f7bd48da101e286da9fbee6.bindTooltip(
+                `<div>
+                     오모차랜드 홍대점
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e3d88dc84f7bd48da101e286da9fbee6.setIcon(icon_f95a47e4ebfe0f35bf1c9f052e7903ed);
+            
+    
+            var marker_dad8243635139eb6f716804656b1529e = L.marker(
+                [37.551281, 126.917808],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_669d98d14c71960bbf6f99ad6241d025 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_dad8243635139eb6f716804656b1529e.bindTooltip(
+                `<div>
+                     다마고치 팝업 (투니크 유니버스점)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dad8243635139eb6f716804656b1529e.setIcon(icon_669d98d14c71960bbf6f99ad6241d025);
+            
+    
+            var marker_485b96a8b4f37800aa247d5d440d586a = L.marker(
+                [37.555337, 126.929186],
+                {
+}
+            ).addTo(map_2306a1542556f6057c6526f1bacf2a58);
+        
+    
+            var icon_0d044de2f9a38379119e4de0a190e3c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_485b96a8b4f37800aa247d5d440d586a.bindTooltip(
+                `<div>
+                     띵크프룻(수플레팬케이크)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_485b96a8b4f37800aa247d5d440d586a.setIcon(icon_0d044de2f9a38379119e4de0a190e3c3);
+            
+</script>
+</html>

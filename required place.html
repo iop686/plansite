@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>required place</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Courier New", Courier, monospace;
+
+            user-select: none;              /* 드래그 방지 */
+            -webkit-user-select: none;      /* 크롬, 사파리 */
+            -moz-user-select: none;         /* 파이어폭스 */
+            -ms-user-select: none;          /* IE, Edge */
+        }
+
+        header{
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 0
+        }
+        header a{
+            text-decoration: none;
+            color: black;
+
+            width: 20px;                /* 원의 가로 */
+            height: 150px;               /* 원의 세로 (같게!) */
+            text-align: center;
+            margin: 0 auto;              /* 수평 가운데 정렬 핵심 */
+            border: 2px solid #aaa;
+            border-radius: 50%;          /* 원형 만들기 */
+            font-size: 60px;
+        }
+
+        .sidebar{
+            font-weight: 580;
+            display: flex;                /* 항목을 가로로 정렬 */
+            justify-content: center;     /* 가운데 정렬 */
+            list-style: none;            /* 앞 점 제거 */
+            margin: 0;                   /* 바깥 여백 제거 */
+            padding: 0;                  /* 안쪽 여백 제거 */
+            width: 100%;
+            height: 40px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #ccc;
+        }
+        .sidebar > li {
+            position: relative;          /* 드롭다운 배치 기준점 */
+            padding: 10px 20px;          /* 위아래 15px, 좌우 20px 여백 */
+            color: rgb(66, 64, 64);                /* 글씨 색: 흰색 */
+            white-space: nowrap;         /* 줄바꿈 안 되도록 설정 */
+            cursor: default;             /* 마우스 올렸을 때 손모양 */
+            width: 150px;           /* ✅ 메뉴 항목 폭 고정 */
+            text-align: center;     /* 텍스트 가운데 정렬 */
+        }
+
+        .sidebar > li:hover {
+            font-weight: 700;
+            outline: 2px solid #aaa; /* ✅ border처럼 보이지만 공간 안 차지함 */
+        }
+
+        .sidebar li a{
+            text-decoration: none;
+            color: rgb(66, 64, 64);
+        }
+
+        .submenu {
+            font-weight: 400;
+            display: none;               /* 처음엔 보이지 않음 */
+            position: absolute;          /* 부모 li를 기준으로 아래에 띄움 */
+            top: 100%;                   /* 부모 메뉴 아래 위치 */
+            left: 0;                     /* 왼쪽 정렬 */
+            background-color: #656565;      /* 배경 어두운 회색 */
+            list-style: none;            /* 앞 점 제거 */
+            margin: 0;
+            padding: 0;
+            z-index: 1000;               /* 다른 요소보다 위에 보이게 함 */
+            width: 100%;
+
+            cursor: pointer;             /* 마우스 올렸을 때 손모양 */
+
+            outline: 2px solid #aaa; /* ✅ border처럼 보이지만 공간 안 차지함 */
+        }
+        .submenu li {
+            width: 100%;
+            text-align: center;
+            font-size:  12px;
+            padding: 10px 0px;          /* 위아래 15px, 좌우 20px 여백 */
+            color: white;
+        }
+        .submenu li:hover {
+            font-weight: 600;
+            background-color: #4c4c4c;      /* 마우스 올렸을 때 강조 */
+        }
+
+        .sidebar > li:hover .submenu {
+            display: block;              /* 마우스 올리면 드롭다운 메뉴 표시 */
+        }
+
+        .submenu li a{
+            text-decoration: none;
+            color: white;
+        }
+
+        main h2 {
+            text-align: center;
+            font-weight: 600;
+            padding: 30px 30px;
+        }
+        
+        .wrapper {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .map-row {
+            display: flex;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .iframe {
+            flex: 1 1 auto;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+
+        .span{
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .explain2 {
+            flex: 1 1 40%;
+            flex-direction: column;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        section {
+            border-bottom: 1px solid #ccc;
+        }
+
+        table.shop-table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .shop-table th,
+        .shop-table td {
+            border: 1px solid #aaa;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .shop-table thead {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .notice {
+            font-size: 12px;
+            text-align: center;
+            padding: 6px;
+            background-color: #f9f9f9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 40px;
+            right: 30px;
+            z-index: 1000;
+            display: none; /* 처음엔 안 보임 */
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s;
+        }
+        #scrollToTopBtn:hover {
+            background-color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .map-row {
+                flex-direction: column;
+            }
+
+            iframe {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="main.html"><span style="color: black;">plan</span></a>
+        </h1>
+    </header>
+    <nav>
+        <ul class="sidebar">
+            <li>
+                i'm dying
+                <ul class="submenu">
+                    <li>bacause</li>
+                    <li>this</li>
+                    <li>is</li>
+                    <li>JONNA</li>
+                    <li>스불재</li>
+                </ul>
+            </li>
+            <li>
+                <a href="plan.html">planning</a>
+                <ul class="submenu">
+                    <li><a href="plan.html">6.25 plan</a></li>
+                    <li><a href="plan.html#626">6.26 plan</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="required place.html">required place</a>
+                <ul class="submenu">
+                    <li><a href="required place.html#film">필름현상</a></li>
+                    <li><a href="required place.html#nagano">나가노 팝업</a></li>
+                    <li><a href="required place.html#jungkyung">중경식객</a></li>
+                    <li><a href="required place.html#tamagochi">다마고치 팝업</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="selected place.html">selected place</a>
+                <ul class="submenu">
+                    <li><a href="selected place.html#chipshop">시로 상점</a></li>
+                    <li><a href="selected place.html#omocha2">오모차랜드 홍대2호점</a></li>
+                    <li><a href="selected place.html#theqoo">더쿠 홍대입구점</a></li>
+                    <li><a href="selected place.html#onefigure">원 피규어</a></li>
+                    <li><a href="selected place.html#omocha1">오모차랜드 홍대점</a></li>
+                    <li><a href="selected place.html#thinkfruit">띵크프룻</a></li>
+                </ul>
+            </li>
+            <li>
+                my head BOOM
+                <ul class="submenu">
+                    <li>BOOM</li>
+                    <li>BOOMBOOM</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <h2>required place</h2>
+        <div class="wrapper">
+            <section id="film">
+                <span class="span">📸 필름현상</span>
+                <div class="map-row">
+                    
+                    <iframe class="iframe"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1329.853883665286!2d126.91934164174981!3d37.556397255652406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98dce8399bc3%3A0x6b90a14f50348c0f!2z7Y-s7Yag656c65Oc7ZmN64yA7KCQ!5e0!3m2!1sko!2skr!4v1750792547601!5m2!1sko!2skr"
+                        width="600" height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="explain2">
+                        <table class="shop-table">
+                            <thead>
+                                <tr>
+                                    <th>요일</th>
+                                    <th>운영시간</th>
+                                    <th>휴게시간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>월~금</td><td>09:30 - 19:00</td><td>12:30 - 13:30</td></tr>
+                                <tr><td>토요일</td><td colspan="2">정기휴무</td></tr>
+                                <tr><td>일요일</td><td colspan="2">정기휴무</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="nagano">
+                <span class="span">🍜 나가노 팝업</span>
+                <div class="map-row">
+                    <iframe class="iframe"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d235.08631329010578!2d126.92215973005943!3d37.556670328204916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sko!2skr!4v1750792369983!5m2!1sko!2skr"
+                        width="600" height="450"
+                        style="border:0;"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="explain2">
+                        <table class="shop-table">
+                            <thead>
+                                <tr>
+                                    <th>요일</th>
+                                    <th>운영시간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>수요일</td><td>11:00 - 21:00</td></tr>
+                                <tr><td>목요일</td><td>11:00 - 21:00</td></tr>
+                                <tr><td>금요일</td><td>11:00 - 21:00</td></tr>
+                                <tr><td>토요일</td><td>11:00 - 21:00</td></tr>
+                                <tr><td>일요일</td><td>11:00 - 21:00</td></tr>
+                                <tr><td>월요일</td><td>11:00 - 21:00</td></tr>
+                                <tr><td>화요일</td><td>11:00 - 21:00</td></tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2" class="notice">
+                                        ※ 결제 마감 20:30 매장 이용에 참고 바랍니다.
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="jungkyung">
+                <span class="span">🍱 중경식객</span>
+                <div class="map-row">
+                    <iframe class="iframe"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.9563914524347!2d126.92408770000003!3d37.55609120000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9900549f9c45%3A0x6760ba89fa5aa112!2z7KSR6rK97Iud6rCdIO2ZjeuMgOygkA!5e0!3m2!1sko!2skr!4v1750792460327!5m2!1sko!2skr"
+                        width="600" height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="explain2">
+                        <table class="shop-table">
+                            <thead>
+                                <tr>
+                                    <th>요일</th>
+                                    <th>운영시간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>매일</td><td>11:30 - 22:30</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tamagochi">
+                <span class="span">🐣 다마고치 팝업</span>
+                <div class="map-row">
+                    <iframe class="iframe"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.1592085304055!2d126.91533918849201!3d37.55131264116156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c99c10e93db71%3A0x47ad48e73cde2554!2z7Yis64uI7YGsIOycoOuLiOuyhOyKpOygkA!5e0!3m2!1sko!2skr!4v1750791787462!5m2!1sko!2skr"
+                        width="600" height="450"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    <div class="explain2">
+                        <table class="shop-table">
+                            <td>일정</td>
+                            <td> 2025.06.19 ~ 2025.07.13
+                            AM 11 - PM 21 </td>
+                        </table>
+
+                        <br />
+
+                        <table class="shop-table">
+                                <thead>
+                                    <tr>
+                                        <th>예약가능타임</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>11:00 - 12:45</td></tr>
+                                    <tr><td>13:00 - 14:45</td></tr>
+                                    <tr><td>15:00 - 16:45</td></tr>
+                                    <tr><td>17:00 - 18:45</td></tr>
+                                    <tr><td>19:00 - 20:45</td></tr>
+                                    <tr>
+                                        <td class="notice">
+                                            <strong>
+                                                비예약자의 경우 각 타임별 오픈30분 이후부터 결제가 가능합니다.
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>aespa 2025.6.27 1PM comeback many 관심 please</p>
+        <p>&copy; 2025. iop All rights reserved.</p>
+    </footer>
+
+    <button id="scrollToTopBtn" title="맨 위로 가기">↑</button>
+
+    <script>
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // 스크롤 감지해서 버튼 보이게/숨기기
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        // 버튼 클릭 시 부드럽게 위로 이동
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+</body>
+</html>
