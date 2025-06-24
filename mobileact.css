@@ -1,0 +1,80 @@
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    header a {
+        font-size: 40px;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+    }
+
+    .sidebar {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .sidebar > li {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 0;
+    }
+
+    .submenu {
+        position: static;
+        width: 100%;
+    }
+
+    .submenu li {
+        font-size: 12px;
+        padding: 6px 0;
+    }
+
+    .wrapper {
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .iframeiframeiframe,
+    .iframe {
+        height: 250px;
+    }
+
+    .explain1, .explain2 {
+        font-size: 13px;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    table, .shop-table {
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .mapmapmap, .map-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .placelink a h3 {
+        font-size: 16px;
+    }
+
+    .span, .spanspanspan {
+        font-size: 18px;
+    }
+
+    #scrollToTopBtn {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 14px;
+        font-size: 16px;
+    }
+}
